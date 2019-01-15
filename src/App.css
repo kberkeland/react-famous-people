@@ -8,8 +8,8 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: steelblue;
+  min-height: 50 px;
   display: flex;
   flex-direction: column;
   align-items: center;
