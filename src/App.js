@@ -1,15 +1,37 @@
 import React, { Component } from 'react';
 
-import Header from './Header.js';
-import FamousPerson from './FamousPerson.js';
+import Header from './components/Header.js';
+import FamousPersonIn from './components/FamousPersonIn.js';
+import FamousPeopleTable from './components/FamousPeopleTable.js';
 import './App.css';
 
 class App extends Component {
+
+  constructor () {
+    super();
+    this.state = {
+      famousPersonArray: [],
+    };
+  }
+
+  getPersonFromFamousPerson = (famousPersonToAdd) => {
+    this.setState({
+      famousPersonArray: [...this.state.famousPersonArray, famousPersonToAdd],
+    }, () => {this.logFields()});
+  }
+
+  logFields = () => {
+    console.log(`App state person: ${this.state.famousPersonArray}`);
+  }
+
   render() {
     return (
       <div className="App">
         <Header />
-        <FamousPerson />
+        {JSON.stringify(this.state.famousPersonArray)}
+        <FamousPersonIn getPerson={this.getPersonFromFamousPerson} />
+        <FamousPeopleTable appPeopleToTable={this.state.famousPersonArray} />
+
       </div>
     );
   }

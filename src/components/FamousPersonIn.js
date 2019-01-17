@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class FamousPerson extends Component {
+class FamousPersonIn extends Component {
   constructor () {
     super();
     this.state = { person: 'Franklin Roosevelt',
@@ -9,14 +9,19 @@ class FamousPerson extends Component {
   }
 
   handlePersonInput = (event) => {
-
     this.setState({person: event.target.value});
 
   }
 
   handleRoleInput = (event) => {
-
     this.setState({role: event.target.value});
+  }
+
+  sendPersonToApp = () => {
+    const famousPerson = { person: this.state.person,
+                     role: this.state.role
+                   };
+    this.props.getPerson(famousPerson);
   }
 
   render() {
@@ -26,9 +31,10 @@ class FamousPerson extends Component {
         <input onChange={this.handlePersonInput}></input>
         <p>Role = {this.state.role}</p>
         <input onChange={this.handleRoleInput}></input>
+        <button onClick={this.sendPersonToApp}>Press Me</button>
       </div>
     );
   }
 }
 
-export default FamousPerson;
+export default FamousPersonIn;
